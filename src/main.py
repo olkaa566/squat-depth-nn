@@ -7,5 +7,5 @@ def main():
 
     #example placeholder, pipeline execution
 
-if __name__ == "__name__":
+if __name__ == "__main__":
     main()
