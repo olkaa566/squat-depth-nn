@@ -1,35 +1,44 @@
+# Prerequisites
+*.d
 
-.env
-secrets.json
-*.pem
-
-__pycache__/
-*.pyc
-.venv/
-venv/
-env/
-
-*.jpg
-*.jpeg
-*.png
-*.mp4
-data/raw/
-data/processed/
-
-*.npy
-*.npz
-*.pkl
-*.h5
-*.ckpt
-models/weights/
-
-.vscode/
-.idea/
-.DS_Store
-*.log
-
-build/
-*.pyd
-*.so
+# Compiled Object files
+*.slo
+*.lo
 *.o
-__pycache__/
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# CMake specifically
+build/
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Testing/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
