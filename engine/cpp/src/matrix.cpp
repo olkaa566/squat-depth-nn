@@ -32,36 +32,38 @@ vector<float> Matrix::get_data() const {
 // Transpose
 Matrix Matrix::transpose() {
     Matrix result(columns, rows);
-    
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < columns; j++) {
-            result.data[j * rows + i] = this->data[i * columns + j];
+
+    for (int y = 0; y < rows; ++y) {
+        for (int x = 0; x < columns; ++x) {
+            //  x becomes the row (y-axis) in the new matrix
+            result.at(y, x) = this->at(x, y); 
         }
     }
-    
     return result;
 }
 
 // Dot Product
 Matrix Matrix::dot(const Matrix& other) {
-    if (this->columns != other.rows) {
-        throw invalid_argument("Dimension mismatch for dot product!");
+    if (this->columns != other.get_rows()) {
+        throw std::invalid_argument("Matrix dot product failed: Incompatible dimensions.");
     }
-    
-    Matrix result(this->rows, other.columns);
-    
-    for (int i = 0; i < this->rows; i++) {
-        for (int j = 0; j < other.columns; j++) {
+
+    // The resulting matrix takes the outer dimensions: (A rows x B cols)
+    Matrix result(this->rows, other.get_columns());
+
+    for (int y = 0; y < result.get_rows(); ++y) {
+        for (int x = 0; x < result.get_columns(); ++x) {
             float sum = 0.0f;
             
-            for (int k = 0; k < this->columns; k++) {
-                sum += this->data[i * this->columns + k] * other.data[k * other.columns + j];
+            // Calculate the dot product of the current row of 'this' 
+            // and the current column of 'other'
+            for (int k = 0; k < this->columns; ++k) {
+                sum += this->at(k, y) * other.at(x, k);
             }
             
-            result.data[i * other.columns + j] = sum;
+            result.at(x, y) = sum;
         }
     }
-    
     return result;
 }
 

@@ -16,6 +16,15 @@ public:
     // Getters
     int get_rows() const;
     int get_columns() const;
+    
+    inline float at(int x, int y) const {
+        return data[(y * columns) + x];
+    }
+
+    inline float& at(int x, int y) {
+        return data[(y * columns) + x];
+    }
+
     std::vector<float> get_data() const;
 
     // Math Operations
