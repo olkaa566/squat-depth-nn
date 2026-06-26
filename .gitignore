@@ -42,3 +42,22 @@ cmake_install.cmake
 install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
+
+# Package Managers
+vcpkg/
+.vcpkg/
+vcpkg_installed/
+
+# Python Bindings
+*.pyd
+
+# Editor Settings
+.vscode/
+.idea/
+*.suo
+
+# Heavy Media Files (Ignore massive videos, allow small test PNGs)
+*.mp4
+*.mov
+*.avi
+*.mkv
