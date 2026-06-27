@@ -11,7 +11,7 @@ Matrix::Matrix(int r, int c) : rows(r), columns(c) {
     data.resize(r * c, 0.0f);
 }
 
-// Constructor
+// Constructor with input data
 Matrix::Matrix(int r, int c, const vector<float>& input_data) : rows(r), columns(c), data(input_data) {
     if (input_data.size() != r * c) {
         throw invalid_argument("Data size does not match matrix dimensions.");
@@ -62,31 +62,10 @@ Matrix Matrix::dot(const Matrix& other) {
             for (int k = 0; k < this->columns; ++k) {
                 sum += this->at(k, y) * other.at(x, k);
             }
-            
             result.at(x, y) = sum;
         }
     }
     return result;
-}
-
-float calculate_joint_angle(float ax, float ay, float bx, float by, float cx, float cy) {
-    float ba_x = ax - bx;
-    float ba_y = ay - by;
-    float bc_x = cx - bx;
-    float bc_y = cy - by;
-
-    float dot_prod = (ba_x * bc_x) + (ba_y * bc_y);
-    float mag_ba = std::sqrt(ba_x * ba_x + ba_y * ba_y);
-    float mag_bc = std::sqrt(bc_x * bc_x + bc_y * bc_y);
-
-    if (mag_ba * mag_bc == 0.0f) {
-        return 0.0f;
-    } 
-
-    float angle_rad = std::acos(dot_prod / (mag_ba * mag_bc));
-    float angle_deg = angle_rad * (180.0f / 3.14159265358979323846f);
-
-    return angle_deg;
 }
 
 // Constructor: Initialize the network architecture

@@ -1,3 +1,4 @@
+#pragma once
 #include <array>
 #include "matrix.hpp"
 #include "vision_constants.hpp"

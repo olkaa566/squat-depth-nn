@@ -1,6 +1,7 @@
 //inline functions to help map (x,y) to data index
 //index = (y * width) + x
 
+#pragma once
 //#include <vector>
 #include <array>
 
