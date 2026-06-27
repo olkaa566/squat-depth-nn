@@ -39,4 +39,4 @@ cmake --build . --config Release
 
 This project utilizes third-party libraries (such as stb_image for initial I/O testing) licensed under the MIT License. See THIRD-PARTY-NOTICES.txt for details.
 
-![alt text](image.png)
+![alt text](assets/kot.png)
