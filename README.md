@@ -39,4 +39,7 @@ cmake --build . --config Release
 
 This project utilizes third-party libraries (such as stb_image for initial I/O testing) licensed under the MIT License. See THIRD-PARTY-NOTICES.txt for details.
 
-![alt text](assets/kot.png)
+<p align="center">
+  <img src="assets/kot.png" alt="slodki kot dla cb" width="400">
+  <br>
+</p>
