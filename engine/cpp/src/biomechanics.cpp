@@ -1,24 +1,34 @@
 #include "biomechanics.hpp"
 #include <cmath>
 
-// Calculates the angle at joint B given three points (A, B, C)
-// cos(theta) = (BA · BC) / (|BA| * |BC|)
-float calculate_joint_angle(float ax, float ay, float bx, float by, float cx, float cy) {
-    float ba_x = ax - bx;
-    float ba_y = ay - by;
-    float bc_x = cx - bx;
-    float bc_y = cy - by;
+// ax, ay = Hip 
+// bx, by = Knee
+float calculate_joint_angle(float ax, float ay, float bx, float by) {
+    float cx = bx;
+    float cy = by + 1.0f;
 
-    float dot_prod = (ba_x * bc_x) + (ba_y * bc_y);
-    float mag_ba = std::sqrt(ba_x * ba_x + ba_y * ba_y);
-    float mag_bc = std::sqrt(bc_x * bc_x + bc_y * bc_y);
+    float v_hip_x = ax - bx;
+    float v_hip_y = ay - by;
 
-    if (mag_ba * mag_bc == 0.0f) {
-        return 0.0f;
-    } 
+    float v_bottom_x = cx - bx; 
+    float v_bottom_y = cy - by;
 
-    float angle_rad = std::acos(dot_prod / (mag_ba * mag_bc));
-    float angle_deg = angle_rad * (180.0f / 3.14159265358979323846f);
+    float mag_hip = std::sqrt((v_hip_x * v_hip_x) + (v_hip_y * v_hip_y));
+    float mag_bottom = std::sqrt((v_bottom_x * v_bottom_x) + (v_bottom_y * v_bottom_y));
 
-    return angle_deg;
+    float dot_product = (v_hip_x * v_bottom_x) + (v_hip_y * v_bottom_y);
+    float cos_angle = dot_product / (mag_hip * mag_bottom);
+    
+    if (cos_angle > 1.0f) {
+        cos_angle = 1.0f;
+    }
+
+    if (cos_angle < -1.0f) {
+        cos_angle = -1.0f;
+    }
+
+    float angle_radians = std::acoshl(cos_angle);
+    float angle_degrees = angle_radians * (180.0f / 3.14159265f);
+
+    return angle_degrees;
 }

@@ -2,13 +2,13 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import subprocess 
 
-img = mpimg.imread('assets/test_squat.png')
+img = mpimg.imread('assets/mikolaj_squat.png')
 
 plt.imshow(img)
-plt.title("Click 3 times: 1. Hip, 2. Knee, 3. Ankle")
+plt.title("Click 2 times: 1. Hip, 2. Knee")
 print("Waiting for your clicks.")
 
-points = plt.ginput(3) 
+points = plt.ginput(2) 
 plt.close()
 
 terminal_command = ['.\\eng.exe']
